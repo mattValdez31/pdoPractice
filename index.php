@@ -1,5 +1,7 @@
+<html>
+<body>
+
 <?php 
-//PDO Practice
 
 $dsn = 'mysql:host=sql2.njit.edu;dbname=mjv32';
 $uname = 'mjv32';
@@ -16,6 +18,12 @@ catch (PDOException $e)
 	$e_message = $e->getMessage();
 	echo "<p>Could not connect to the database: $e_message </p>";
 }
+
+if (!mysql_select_db("mjv32"))
+{
+	echo "Unable to select db: " . mysql_error();
+}
+
 
 $q = "SELECT * FROM accounts WHERE id<6";
 $result = mysql_query($q);
@@ -67,3 +75,5 @@ class tableTags
 
 
 ?>
+</body>
+</html>

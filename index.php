@@ -7,7 +7,7 @@ $dsn = 'mysql:host=sql2.njit.edu;dbname=mjv32';
 $uname = 'mjv32';
 $passwd = 'ccYhBxVxR';
 
-//Create PDO objec
+//Create PDO object
 try
 {
 	$db = new PDO($dsn, $uname, $passwd);
@@ -19,31 +19,30 @@ catch (PDOException $e)
 	echo "<p>Could not connect to the database: $e_message </p>";
 }
 
-/*if (!mysql_select_db("mjv32"))
-{
-	echo "Unable to select db: " . mysql_error();
-}*/
-
 
 $q = "SELECT * FROM accounts WHERE id<6";
-$result = mysql_query($q);
-$count = sizeof($query);
+$query = $db->prepare($q);
+$query->execute();
+$result = $query->fetchAll();
 
 tableTags::tFormat();
 
-while ($row = mysql_fetch_assoc($result))
+foreach($result as $r)
 {
-	$i = 0;
-	foreach ($row as $r)
-	{
-		tableTags::tDetail($r);
-		if($i == sizeof($row)-1)
-		{
-			tableTags::endTRow();
-		}
-		$i++;
-	}
+	echo "<tr>";
+	echo "matt";
+	tableTags::tDetail($r['id']);
+	tableTags::tDetail($r['email']);
+	tableTags::tDetail($r['fname']);
+	tableTags::tDetail($r['lname']);
+	tableTags::tDetail($r['phone']);
+	tableTags::tDetail($r['birthday']);
+	tableTags::tDetail($r['gender']);
+	tableTags::tDetail($r['password']);
+
+	tableTags::endTRow();
 }
+
 
 class tableTags
 	{

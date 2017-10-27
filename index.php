@@ -19,10 +19,10 @@ catch (PDOException $e)
 	echo "<p>Could not connect to the database: $e_message </p>";
 }
 
-if (!mysql_select_db("mjv32"))
+/*if (!mysql_select_db("mjv32"))
 {
 	echo "Unable to select db: " . mysql_error();
-}
+}*/
 
 
 $q = "SELECT * FROM accounts WHERE id<6";

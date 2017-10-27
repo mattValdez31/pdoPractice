@@ -7,7 +7,7 @@ $dsn = 'mysql:host=sql2.njit.edu;dbname=mjv32';
 $uname = 'mjv32';
 $passwd = 'ccYhBxVxR';
 
-//Create PDO object
+//Create PDO objec
 try
 {
 	$db = new PDO($dsn, $uname, $passwd);
